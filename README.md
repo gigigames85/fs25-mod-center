@@ -36,7 +36,7 @@ WebView2 is downloaded automatically by the installer when required.
 ## Installation
 
 1. Open the latest release.
-2. Download `FS25 Mod Center_0.1.0-beta.1_x64-setup.exe`.
+2. Download `FS25.Mod.Center_0.1.0-beta.1_x64-setup.exe`.
 3. Run the installer.
 4. Start FS25 Mod Center from the Windows Start menu.
 
@@ -92,7 +92,7 @@ Nella Beta 1 soltanto il pulsante **Avvia FS25** è riservato all’edizione Ste
 ### Installazione
 
 1. Apri la release più recente.
-2. Scarica `FS25 Mod Center_0.1.0-beta.1_x64-setup.exe`.
+2. Scarica `FS25.Mod.Center_0.1.0-beta.1_x64-setup.exe`.
 3. Avvia l’installer.
 4. Apri FS25 Mod Center dal menu Start di Windows.
 
