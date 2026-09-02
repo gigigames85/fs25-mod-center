@@ -131,7 +131,7 @@ The **Launch FS25** button currently supports Steam only. Other editions must be
 
 ## 11. Reporting a problem
 
-Open a report in [GitHub Issues](https://github.com/gigigames85-bit/fs25-mod-center/issues) and include:
+Open a report in [GitHub Issues](https://github.com/gigigames85/fs25-mod-center/issues) and include:
 
 * Windows version
 * FS25 Mod Center version
@@ -267,7 +267,7 @@ Attualmente soltanto il pulsante **Avvia FS25** richiede Steam. Le altre edizion
 
 ## 11. Segnalazione di un problema
 
-Apri una segnalazione in [GitHub Issues](https://github.com/gigigames85-bit/fs25-mod-center/issues) indicando:
+Apri una segnalazione in [GitHub Issues](https://github.com/gigigames85/fs25-mod-center/issues) indicando:
 
 * Versione di Windows
 * Versione di FS25 Mod Center
