@@ -10,6 +10,13 @@ FS25 Mod Center is a Windows desktop application designed to organize and manage
 
 Download the latest public Beta from the [Releases](https://github.com/gigigames85-bit/fs25-mod-center/releases) section.
 
+## User guide · Guida utente
+
+Read the complete [English and Italian user guide](USER_GUIDE.md).
+
+Consulta la [guida utente completa in inglese e italiano](USER_GUIDE.md).
+
+
 ## Main features
 
 * Multiple mod profiles for different maps
