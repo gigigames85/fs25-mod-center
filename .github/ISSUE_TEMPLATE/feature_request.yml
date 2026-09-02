@@ -1,0 +1,56 @@
+name: Feature request / Proposta
+description: Suggest an improvement or a new feature / Proponi un miglioramento o una nuova funzione
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement for FS25 Mod Center.
+        Grazie per aver proposto un miglioramento per FS25 Mod Center.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request type / Tipo di proposta
+      options:
+        - New feature / Nuova funzione
+        - Improvement / Miglioramento
+        - User interface / Interfaccia
+        - Translation / Traduzione
+        - Other / Altro
+    validations:
+      required: true
+
+  - type: textarea
+    id: need
+    attributes:
+      label: What need or problem would this address? / Quale esigenza risolverebbe?
+      description: Explain why this change would be useful.
+      placeholder: Describe the need or current limitation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution / Soluzione proposta
+      description: Describe how you would like the feature to work.
+      placeholder: Describe your idea as clearly as possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or additional information / Alternative o informazioni aggiuntive
+      description: Add possible alternatives, examples or screenshots.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preliminary checks / Controlli preliminari
+      options:
+        - label: I have checked that a similar request has not already been submitted. / Ho verificato che una proposta simile non sia già stata inviata.
+          required: true
