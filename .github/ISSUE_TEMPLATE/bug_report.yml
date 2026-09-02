@@ -1,0 +1,84 @@
+name: Bug report / Segnalazione bug
+description: Report a problem with FS25 Mod Center / Segnala un problema con FS25 Mod Center
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve FS25 Mod Center.
+        Grazie per il tuo contributo al miglioramento di FS25 Mod Center.
+
+        Please complete the following fields with as much detail as possible.
+        Compila i seguenti campi fornendo più dettagli possibile.
+
+  - type: input
+    id: app-version
+    attributes:
+      label: FS25 Mod Center version / Versione
+      description: Which version of FS25 Mod Center are you using?
+      placeholder: "Example: 0.1.0-beta.1"
+    validations:
+      required: true
+
+  - type: input
+    id: windows-version
+    attributes:
+      label: Windows version / Versione di Windows
+      placeholder: "Example: Windows 11 64-bit"
+    validations:
+      required: true
+
+  - type: input
+    id: game-edition
+    attributes:
+      label: FS25 edition or launcher / Edizione o launcher di FS25
+      description: Steam, GIANTS, Microsoft Store, Epic Games or another edition.
+      placeholder: "Example: Steam"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem description / Descrizione del problema
+      description: Explain what happened and what you were doing.
+      placeholder: Describe the problem clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Passaggi per riprodurre il problema
+      description: List the steps needed to reproduce the problem.
+      placeholder: |
+        1. Open...
+        2. Select...
+        3. Click...
+        4. The problem appears...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour / Comportamento previsto
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or additional information / Screenshot o informazioni aggiuntive
+      description: Add screenshots or any other useful information. Do not include personal or sensitive data.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preliminary checks / Controlli preliminari
+      options:
+        - label: I have checked that the same problem has not already been reported. / Ho verificato che lo stesso problema non sia già stato segnalato.
+          required: true
