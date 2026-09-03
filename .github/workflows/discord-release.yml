@@ -63,7 +63,7 @@ jobs:
                     fields: [
                       { name: "🏷️ Version / Versione", value: ($tag // "-"), inline: true },
                       { name: "📦 Type / Tipo", value: releaseType, inline: true },
-                      { name: "⬇️ Download", value: "[Open release on GitHub / Apri la release su GitHub](" + $url + ")", inline: false }
+                      { name: "⬇️ Download", value: ("[Open release on GitHub / Apri la release su GitHub](" + $url + ")"), inline: false }
                     ],
                     footer: { text: "FS25 Mod Center • GitHub Releases" },
                     timestamp: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))
