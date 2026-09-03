@@ -14,11 +14,12 @@ jobs:
       - name: Send release announcement to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          GITHUB_EVENT_RELEASE_NAME: ${{ github.event.release.name }}
-          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
-          GITHUB_EVENT_RELEASE_URL: ${{ github.event.release.html_url }}
-          GITHUB_EVENT_RELEASE_BODY: ${{ github.event.release.body }}
-          GITHUB_EVENT_RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
+          RELEASE_BODY: ${{ github.event.release.body }}
+          RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
+          RELEASE_PUBLISHED_AT: ${{ github.event.release.published_at }}
         shell: bash
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
@@ -26,24 +27,50 @@ jobs:
             exit 1
           fi
 
+          if [ -z "$RELEASE_BODY" ]; then
+            RELEASE_BODY="È disponibile una nuova versione di FS25 Mod Center."
+          fi
+
+          DISPLAY_NAME="${RELEASE_NAME:-$RELEASE_TAG}"
+
           PAYLOAD=$(jq -n \
             --arg username "FS25 Mod Center" \
-            --arg title "🚜 FS25 Mod Center — ${GITHUB_EVENT_RELEASE_NAME:-${GITHUB_EVENT_RELEASE_TAG}}" \
-            --arg url "$GITHUB_EVENT_RELEASE_URL" \
-            --arg tag "$GITHUB_EVENT_RELEASE_TAG" \
-            --arg body "$GITHUB_EVENT_RELEASE_BODY" \
-            --arg prerelease "$GITHUB_EVENT_RELEASE_PRERELEASE" \
+            --arg title "🚜 FS25 Mod Center · ${DISPLAY_NAME}" \
+            --arg url "$RELEASE_URL" \
+            --arg tag "$RELEASE_TAG" \
+            --arg body "$RELEASE_BODY" \
+            --arg prerelease "$RELEASE_PRERELEASE" \
+            --arg published_at "$RELEASE_PUBLISHED_AT" \
             '{
               username: $username,
+              allowed_mentions: {parse: []},
+              content: "📢 **Nuova versione disponibile**",
               embeds: [{
                 title: $title,
                 url: $url,
-                description: (($body | if length > 3500 then .[0:3500] + "…" else . end) // "A new version is available."),
+                description: ($body | if length > 3200 then .[0:3200] + "…" else . end),
+                color: 2278750,
                 fields: [
-                  {name: "Version", value: $tag, inline: true},
-                  {name: "Release", value: (if $prerelease == "true" then "Pre-release" else "Stable" end), inline: true}
+                  {
+                    name: "📦 Versione",
+                    value: ("`" + $tag + "`"),
+                    inline: true
+                  },
+                  {
+                    name: "🏷️ Tipo",
+                    value: (if $prerelease == "true" then "Pre-release" else "Stable" end),
+                    inline: true
+                  },
+                  {
+                    name: "⬇️ Download",
+                    value: ("[Apri la release su GitHub](" + $url + ")"),
+                    inline: false
+                  }
                 ],
-                footer: {text: "GitHub Release • FS25 Mod Center"}
+                footer: {
+                  text: "FS25 Mod Center • GitHub Releases"
+                },
+                timestamp: $published_at
               }]
             }')
 
