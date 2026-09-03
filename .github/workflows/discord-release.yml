@@ -3,6 +3,10 @@ name: Announce releases on Discord
 on:
   release:
     types: [published]
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/discord-release.yml'
 
 permissions:
   contents: read
@@ -14,6 +18,11 @@ jobs:
       - name: Send release announcement to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          GITHUB_EVENT_RELEASE_NAME: ${{ github.event_name == 'release' && github.event.release.name || 'Test collegamento Discord' }}
+          GITHUB_EVENT_RELEASE_TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || 'TEST' }}
+          GITHUB_EVENT_RELEASE_URL: ${{ github.event_name == 'release' && github.event.release.html_url || format('{0}/{1}', github.server_url, github.repository) }}
+          GITHUB_EVENT_RELEASE_BODY: ${{ github.event_name == 'release' && github.event.release.body || '✅ Collegamento GitHub → Discord configurato correttamente per FS25 Mod Center.' }}
+          GITHUB_EVENT_RELEASE_PRERELEASE: ${{ github.event_name == 'release' && github.event.release.prerelease || false }}
         shell: bash
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
@@ -46,9 +55,3 @@ jobs:
             -H "Content-Type: application/json" \
             -d "$PAYLOAD" \
             "$DISCORD_WEBHOOK_URL"
-        env:
-          GITHUB_EVENT_RELEASE_NAME: ${{ github.event.release.name }}
-          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
-          GITHUB_EVENT_RELEASE_URL: ${{ github.event.release.html_url }}
-          GITHUB_EVENT_RELEASE_BODY: ${{ github.event.release.body }}
-          GITHUB_EVENT_RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
