@@ -1,0 +1,54 @@
+name: Announce releases on Discord
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send release announcement to Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL secret is not configured."
+            exit 1
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg username "FS25 Mod Center" \
+            --arg title "🚜 FS25 Mod Center — ${GITHUB_EVENT_RELEASE_NAME:-${GITHUB_EVENT_RELEASE_TAG}}" \
+            --arg url "$GITHUB_EVENT_RELEASE_URL" \
+            --arg tag "$GITHUB_EVENT_RELEASE_TAG" \
+            --arg body "$GITHUB_EVENT_RELEASE_BODY" \
+            --arg prerelease "$GITHUB_EVENT_RELEASE_PRERELEASE" \
+            '{
+              username: $username,
+              embeds: [{
+                title: $title,
+                url: $url,
+                description: (($body | if length > 3500 then .[0:3500] + "…" else . end) // "A new version is available."),
+                fields: [
+                  {name: "Version", value: $tag, inline: true},
+                  {name: "Release", value: (if $prerelease == "true" then "Pre-release" else "Stable" end), inline: true}
+                ],
+                footer: {text: "GitHub Release • FS25 Mod Center"}
+              }]
+            }')
+
+          curl --fail-with-body \
+            -H "Content-Type: application/json" \
+            -d "$PAYLOAD" \
+            "$DISCORD_WEBHOOK_URL"
+        env:
+          GITHUB_EVENT_RELEASE_NAME: ${{ github.event.release.name }}
+          GITHUB_EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          GITHUB_EVENT_RELEASE_URL: ${{ github.event.release.html_url }}
+          GITHUB_EVENT_RELEASE_BODY: ${{ github.event.release.body }}
+          GITHUB_EVENT_RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
