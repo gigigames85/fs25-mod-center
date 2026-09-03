@@ -30,6 +30,7 @@ jobs:
 
           PAYLOAD=$(jq -n \
             --arg username "FS25 Mod Center" \
+            --arg content "📢 **New release available / Nuova versione disponibile**" \
             --arg title "🚜 FS25 Mod Center · ${RELEASE_NAME:-$RELEASE_TAG}" \
             --arg url "$RELEASE_URL" \
             --arg tag "$RELEASE_TAG" \
@@ -43,11 +44,12 @@ jobs:
                 else "Stable / Stabile"
                 end;
 
-              def intro:
-                "**EN**\nA new version of FS25 Mod Center is now available.\n\n**IT**\nÈ disponibile una nuova versione di FS25 Mod Center.";
+              def fallbackDescription:
+                "**English**\nA new version of FS25 Mod Center is now available.\n\n**Italiano**\nÈ disponibile una nuova versione di FS25 Mod Center.";
 
               {
                 username: $username,
+                content: $content,
                 embeds: [
                   {
                     color: 5763719,
@@ -55,8 +57,8 @@ jobs:
                     url: $url,
                     description:
                       (if ($body // "" | length) > 0
-                       then intro + "\n\n---\n" + ($body | shorten(3000))
-                       else intro
+                       then ($body | shorten(3400))
+                       else fallbackDescription
                        end),
                     fields: [
                       { name: "🏷️ Version / Versione", value: ($tag // "-"), inline: true },
