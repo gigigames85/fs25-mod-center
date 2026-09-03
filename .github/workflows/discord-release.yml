@@ -17,7 +17,6 @@ jobs:
           RELEASE_NAME: ${{ github.event.release.name }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
           RELEASE_URL: ${{ github.event.release.html_url }}
-          RELEASE_BODY: ${{ github.event.release.body }}
           RELEASE_IS_PRERELEASE: ${{ github.event.release.prerelease }}
         shell: bash
         run: |
@@ -34,18 +33,11 @@ jobs:
             --arg title "🚜 FS25 Mod Center · ${RELEASE_NAME:-$RELEASE_TAG}" \
             --arg url "$RELEASE_URL" \
             --arg tag "$RELEASE_TAG" \
-            --arg body "$RELEASE_BODY" \
             --arg prerelease "$RELEASE_IS_PRERELEASE" '
-              def shorten($n):
-                if (. // "" | length) > $n then .[0:$n] + "…" else (. // "") end;
-
               def releaseType:
                 if $prerelease == "true" then "Pre-release / Anteprima"
                 else "Stable / Stabile"
                 end;
-
-              def fallbackDescription:
-                "**English**\nA new version of FS25 Mod Center is now available.\n\n**Italiano**\nÈ disponibile una nuova versione di FS25 Mod Center.";
 
               {
                 username: $username,
@@ -55,11 +47,7 @@ jobs:
                     color: 5763719,
                     title: $title,
                     url: $url,
-                    description:
-                      (if ($body // "" | length) > 0
-                       then ($body | shorten(3400))
-                       else fallbackDescription
-                       end),
+                    description: "A new version of FS25 Mod Center is now available.\nÈ disponibile una nuova versione di FS25 Mod Center.",
                     fields: [
                       { name: "🏷️ Version / Versione", value: ($tag // "-"), inline: true },
                       { name: "📦 Type / Tipo", value: releaseType, inline: true },
