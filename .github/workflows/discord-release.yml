@@ -18,61 +18,56 @@ jobs:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
           RELEASE_URL: ${{ github.event.release.html_url }}
           RELEASE_BODY: ${{ github.event.release.body }}
-          RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
-          RELEASE_PUBLISHED_AT: ${{ github.event.release.published_at }}
+          RELEASE_IS_PRERELEASE: ${{ github.event.release.prerelease }}
         shell: bash
         run: |
-          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+          set -euo pipefail
+
+          if [ -z "${DISCORD_WEBHOOK_URL:-}" ]; then
             echo "DISCORD_WEBHOOK_URL secret is not configured."
             exit 1
           fi
 
-          if [ -z "$RELEASE_BODY" ]; then
-            RELEASE_BODY="È disponibile una nuova versione di FS25 Mod Center."
-          fi
-
-          DISPLAY_NAME="${RELEASE_NAME:-$RELEASE_TAG}"
-
           PAYLOAD=$(jq -n \
             --arg username "FS25 Mod Center" \
-            --arg title "🚜 FS25 Mod Center · ${DISPLAY_NAME}" \
+            --arg title "🚜 FS25 Mod Center · ${RELEASE_NAME:-$RELEASE_TAG}" \
             --arg url "$RELEASE_URL" \
             --arg tag "$RELEASE_TAG" \
             --arg body "$RELEASE_BODY" \
-            --arg prerelease "$RELEASE_PRERELEASE" \
-            --arg published_at "$RELEASE_PUBLISHED_AT" \
-            '{
-              username: $username,
-              allowed_mentions: {parse: []},
-              content: "📢 **Nuova versione disponibile**",
-              embeds: [{
-                title: $title,
-                url: $url,
-                description: ($body | if length > 3200 then .[0:3200] + "…" else . end),
-                color: 2278750,
-                fields: [
+            --arg prerelease "$RELEASE_IS_PRERELEASE" '
+              def shorten($n):
+                if (. // "" | length) > $n then .[0:$n] + "…" else (. // "") end;
+
+              def releaseType:
+                if $prerelease == "true" then "Pre-release / Anteprima"
+                else "Stable / Stabile"
+                end;
+
+              def intro:
+                "**EN**\nA new version of FS25 Mod Center is now available.\n\n**IT**\nÈ disponibile una nuova versione di FS25 Mod Center.";
+
+              {
+                username: $username,
+                embeds: [
                   {
-                    name: "📦 Versione",
-                    value: ("`" + $tag + "`"),
-                    inline: true
-                  },
-                  {
-                    name: "🏷️ Tipo",
-                    value: (if $prerelease == "true" then "Pre-release" else "Stable" end),
-                    inline: true
-                  },
-                  {
-                    name: "⬇️ Download",
-                    value: ("[Apri la release su GitHub](" + $url + ")"),
-                    inline: false
+                    color: 5763719,
+                    title: $title,
+                    url: $url,
+                    description:
+                      (if ($body // "" | length) > 0
+                       then intro + "\n\n---\n" + ($body | shorten(3000))
+                       else intro
+                       end),
+                    fields: [
+                      { name: "🏷️ Version / Versione", value: ($tag // "-"), inline: true },
+                      { name: "📦 Type / Tipo", value: releaseType, inline: true },
+                      { name: "⬇️ Download", value: "[Open release on GitHub / Apri la release su GitHub](" + $url + ")", inline: false }
+                    ],
+                    footer: { text: "FS25 Mod Center • GitHub Releases" },
+                    timestamp: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))
                   }
-                ],
-                footer: {
-                  text: "FS25 Mod Center • GitHub Releases"
-                },
-                timestamp: $published_at
-              }]
-            }')
+                ]
+              }')
 
           curl --fail-with-body \
             -H "Content-Type: application/json" \
