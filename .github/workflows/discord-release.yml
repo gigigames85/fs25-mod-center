@@ -30,21 +30,13 @@ jobs:
             exit 1
           fi
 
-          RELEASE_NAME="${RELEASE_NAME:-Bilingual preview / Anteprima bilingue}"
-          RELEASE_TAG="${RELEASE_TAG:-TEST}"
-          RELEASE_URL="${RELEASE_URL:-https://github.com/gigigames85/fs25-mod-center/releases}"
-          RELEASE_BODY="${RELEASE_BODY:-## English
-
-### Preview
-Discord release announcements are now available in English and Italian.
-
----
-
-## Italiano
-
-### Anteprima
-Gli annunci delle release su Discord sono ora disponibili in inglese e italiano.}"
-          RELEASE_IS_PRERELEASE="${RELEASE_IS_PRERELEASE:-true}"
+          if [ -z "${RELEASE_NAME:-}" ]; then
+            RELEASE_NAME="Bilingual preview / Anteprima bilingue"
+            RELEASE_TAG="TEST"
+            RELEASE_URL="https://github.com/gigigames85/fs25-mod-center/releases"
+            RELEASE_BODY=$'## English\n\n### Preview\nDiscord release announcements are now available in English and Italian.\n\n---\n\n## Italiano\n\n### Anteprima\nGli annunci delle release su Discord sono ora disponibili in inglese e italiano.'
+            RELEASE_IS_PRERELEASE="true"
+          fi
 
           PAYLOAD=$(jq -n \
             --arg username "FS25 Mod Center" \
