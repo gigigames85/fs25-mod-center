@@ -3,6 +3,10 @@ name: Announce releases on Discord
 on:
   release:
     types: [published]
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/discord-release.yml
 
 permissions:
   contents: read
@@ -14,6 +18,7 @@ jobs:
       - name: Send release announcement to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT_NAME: ${{ github.event_name }}
           RELEASE_NAME: ${{ github.event.release.name }}
           RELEASE_TAG: ${{ github.event.release.tag_name }}
           RELEASE_URL: ${{ github.event.release.html_url }}
@@ -25,6 +30,15 @@ jobs:
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "DISCORD_WEBHOOK_URL secret is not configured."
             exit 1
+          fi
+
+          if [ "$EVENT_NAME" = "push" ]; then
+            RELEASE_NAME="Anteprima annuncio release"
+            RELEASE_TAG="TEST"
+            RELEASE_URL="https://github.com/gigigames85/fs25-mod-center/releases"
+            RELEASE_BODY=$'✅ Collegamento GitHub → Discord configurato correttamente.\n\nQuesta è l’anteprima del nuovo formato che verrà usato automaticamente per le prossime release di FS25 Mod Center.'
+            RELEASE_PRERELEASE="false"
+            RELEASE_PUBLISHED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           fi
 
           if [ -z "$RELEASE_BODY" ]; then
@@ -51,25 +65,11 @@ jobs:
                 description: ($body | if length > 3200 then .[0:3200] + "…" else . end),
                 color: 2278750,
                 fields: [
-                  {
-                    name: "📦 Versione",
-                    value: ("`" + $tag + "`"),
-                    inline: true
-                  },
-                  {
-                    name: "🏷️ Tipo",
-                    value: (if $prerelease == "true" then "Pre-release" else "Stable" end),
-                    inline: true
-                  },
-                  {
-                    name: "⬇️ Download",
-                    value: ("[Apri la release su GitHub](" + $url + ")"),
-                    inline: false
-                  }
+                  {name: "📦 Versione", value: ("`" + $tag + "`"), inline: true},
+                  {name: "🏷️ Tipo", value: (if $prerelease == "true" then "Pre-release" else "Stable" end), inline: true},
+                  {name: "⬇️ Download", value: ("[Apri la release su GitHub](" + $url + ")"), inline: false}
                 ],
-                footer: {
-                  text: "FS25 Mod Center • GitHub Releases"
-                },
+                footer: {text: "FS25 Mod Center • GitHub Releases"},
                 timestamp: $published_at
               }]
             }')
