@@ -4,6 +4,8 @@ Thank you for helping translate FS25 Mod Center.
 
 The official English reference catalog is [`en-US.json`](en-US.json). Use it as the source for every new language.
 
+A complete Italian translation is available as [`it-IT.json`](it-IT.json) and can be used as a practical example of a finished language file.
+
 ## How to contribute
 
 1. Copy `en-US.json` and rename it using the locale code for your language, for example `de-DE.json`, `fr-FR.json` or `es-ES.json`.
@@ -26,6 +28,8 @@ The English catalog is the canonical reference. If a new FS25 Mod Center version
 Grazie per contribuire alla traduzione di FS25 Mod Center.
 
 Il catalogo inglese ufficiale di riferimento è [`en-US.json`](en-US.json). Deve essere usato come base per ogni nuova lingua.
+
+È disponibile anche la traduzione italiana completa [`it-IT.json`](it-IT.json), utilizzabile come esempio pratico di un file lingua terminato.
 
 ## Come contribuire
 
