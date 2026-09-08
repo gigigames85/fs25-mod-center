@@ -16,6 +16,12 @@ Read the complete [English and Italian user guide](USER_GUIDE.md).
 
 Consulta la [guida utente completa in inglese e italiano](USER_GUIDE.md).
 
+## Community translations
+
+Want to help translate FS25 Mod Center into another language? Use the official [translation guide and English reference catalog](translations/README.md), then submit your contribution through the dedicated [translation form](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+
+The English catalog is the canonical reference. The Italian catalog is available as a complete translated example.
+
 ## Main features
 
 * Multiple mod profiles for different maps
@@ -79,6 +85,12 @@ Scarica l’ultima Beta pubblica dalla sezione [Releases](https://github.com/gig
 ### Guida utente
 
 Consulta la [guida utente completa in italiano e inglese](USER_GUIDE.md).
+
+### Traduzioni della community
+
+Vuoi aiutare a tradurre FS25 Mod Center in un’altra lingua? Consulta la [guida alle traduzioni e il catalogo inglese ufficiale](translations/README.md), quindi invia il contributo tramite il [modulo dedicato alle traduzioni](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+
+Il catalogo inglese è il riferimento canonico. Il catalogo italiano è disponibile come esempio completo di traduzione.
 
 ### Funzioni principali
 
