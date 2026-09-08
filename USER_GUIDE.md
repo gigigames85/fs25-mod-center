@@ -140,6 +140,23 @@ Open a report in [GitHub Issues](https://github.com/gigigames85/fs25-mod-center/
 * What happened
 * Screenshots, when useful
 
+## 12. Community translations
+
+FS25 Mod Center currently includes English and Italian. Community contributions can help add new languages or improve existing translations.
+
+Use the official English catalog [`translations/en-US.json`](translations/en-US.json) as the canonical reference. The Italian catalog [`translations/it-IT.json`](translations/it-IT.json) is available as a complete translation example.
+
+For a new language:
+
+1. Copy `en-US.json` and rename it using the appropriate locale code, for example `de-DE.json`, `fr-FR.json` or `es-ES.json`.
+2. Keep every JSON key exactly unchanged.
+3. Translate only the text values.
+4. Update the `_meta` values for `language`, `code` and `author`.
+5. Before submitting an update, compare your file with the latest English catalog so that new or changed interface strings are not missed.
+6. Submit the completed JSON through the dedicated [translation contribution form](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+
+Read the complete [translation guide](translations/README.md) before submitting a full language file. The same form can also be used for individual corrections, missing text or terminology suggestions.
+
 ---
 
 # Italiano
@@ -275,3 +292,20 @@ Apri una segnalazione in [GitHub Issues](https://github.com/gigigames85/fs25-mod
 * Risultato atteso
 * Comportamento riscontrato
 * Screenshot, quando utili
+
+## 12. Traduzioni della community
+
+FS25 Mod Center include attualmente italiano e inglese. I contributi della community possono aggiungere nuove lingue o migliorare le traduzioni esistenti.
+
+Usa il catalogo inglese ufficiale [`translations/en-US.json`](translations/en-US.json) come riferimento canonico. Il catalogo italiano [`translations/it-IT.json`](translations/it-IT.json) è disponibile come esempio completo di traduzione.
+
+Per aggiungere una nuova lingua:
+
+1. Copia `en-US.json` e rinominalo usando il codice locale appropriato, ad esempio `de-DE.json`, `fr-FR.json` o `es-ES.json`.
+2. Mantieni tutte le chiavi JSON esattamente invariate.
+3. Traduci soltanto i valori testuali.
+4. Aggiorna nella sezione `_meta` i valori `language`, `code` e `author`.
+5. Prima di inviare un aggiornamento, confronta il tuo file con l’ultima versione del catalogo inglese per non perdere testi dell’interfaccia aggiunti o modificati.
+6. Invia il JSON completo tramite il [modulo dedicato alle traduzioni](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+
+Consulta la [guida completa alle traduzioni](translations/README.md) prima di inviare un file lingua completo. Lo stesso modulo può essere utilizzato anche per singole correzioni, testi mancanti o suggerimenti terminologici.
