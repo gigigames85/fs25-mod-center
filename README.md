@@ -41,12 +41,12 @@ WebView2 is downloaded automatically by the installer when required.
 
 FS25 Mod Center can also manage mod folders from non-Steam editions. Profiles, Library, Backup, classification and update checks remain available when the appropriate mod folders are selected.
 
-In Beta 1, only the **Launch FS25** button is reserved for the Steam edition. Other editions of the game must be started from their usual launcher.
+In Beta 2, only the **Launch FS25** button is reserved for the Steam edition. Other editions of the game must be started from their usual launcher.
 
 ## Installation
 
 1. Open the latest release.
-2. Download `FS25.Mod.Center_0.1.0-beta.1_x64-setup.exe`.
+2. Download `FS25.Mod.Center_0.1.0-beta.2_x64-setup.exe`.
 3. Run the installer.
 4. Start FS25 Mod Center from the Windows Start menu.
 
@@ -105,12 +105,12 @@ WebView2 viene scaricato automaticamente dall’installer quando necessario.
 
 FS25 Mod Center può gestire anche le cartelle mod delle edizioni non Steam. Profili, Libreria, Backup, classificazione e controllo degli aggiornamenti restano disponibili selezionando le cartelle mod appropriate.
 
-Nella Beta 1 soltanto il pulsante **Avvia FS25** è riservato all’edizione Steam. Le altre versioni del gioco devono essere avviate dal proprio launcher.
+Nella Beta 2 soltanto il pulsante **Avvia FS25** è riservato all’edizione Steam. Le altre versioni del gioco devono essere avviate dal proprio launcher.
 
 ### Installazione
 
 1. Apri la release più recente.
-2. Scarica `FS25.Mod.Center_0.1.0-beta.1_x64-setup.exe`.
+2. Scarica `FS25.Mod.Center_0.1.0-beta.2_x64-setup.exe`.
 3. Avvia l’installer.
 4. Apri FS25 Mod Center dal menu Start di Windows.
 
