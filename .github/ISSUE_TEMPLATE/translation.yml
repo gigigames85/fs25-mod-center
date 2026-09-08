@@ -8,8 +8,12 @@ body:
         Thank you for helping make FS25 Mod Center accessible to more users.
         Grazie per contribuire a rendere FS25 Mod Center accessibile a più utenti.
 
-        Please use this form for new translations, corrections, terminology improvements or language-specific suggestions.
-        Usa questo modulo per nuove traduzioni, correzioni, miglioramenti terminologici o suggerimenti relativi a una lingua.
+        **Before contributing, please use the official English reference catalog:**
+        **Prima di contribuire, usa il catalogo inglese ufficiale di riferimento:**
+        [Translation guide / Guida alle traduzioni](https://github.com/gigigames85/fs25-mod-center/tree/main/translations) · [en-US.json](https://github.com/gigigames85/fs25-mod-center/blob/main/translations/en-US.json)
+
+        For a complete new language, copy `en-US.json`, keep every key unchanged, translate only the values, and attach the completed JSON file below.
+        Per una nuova lingua completa, copia `en-US.json`, mantieni tutte le chiavi invariate, traduci soltanto i valori e allega qui sotto il file JSON completato.
 
   - type: dropdown
     id: contribution-type
@@ -34,20 +38,11 @@ body:
       required: true
 
   - type: textarea
-    id: source-text
+    id: contribution
     attributes:
-      label: Original text or key / Testo originale o chiave
-      description: Paste the original text shown in FS25 Mod Center, or the translation key if known.
-      placeholder: Paste the original text or key here.
-    validations:
-      required: true
-
-  - type: textarea
-    id: proposed-translation
-    attributes:
-      label: Proposed translation / Traduzione proposta
-      description: Enter the translation you suggest.
-      placeholder: Write the proposed translation here.
+      label: Translation contribution / Contributo alla traduzione
+      description: For a complete language, attach the translated JSON file here. For a correction, provide the original key/text and your proposed translation. / Per una lingua completa, allega qui il file JSON tradotto. Per una correzione, indica la chiave/testo originale e la traduzione proposta.
+      placeholder: Attach the translated JSON file, or enter the original key/text and your proposed translation.
     validations:
       required: true
 
@@ -73,5 +68,7 @@ body:
     attributes:
       label: Preliminary checks / Controlli preliminari
       options:
+        - label: I used the latest official English reference catalog and kept the JSON keys unchanged. / Ho usato l'ultimo catalogo inglese ufficiale e ho mantenuto invariate le chiavi JSON.
+          required: true
         - label: I have checked that a similar translation contribution has not already been submitted. / Ho verificato che un contributo simile non sia già stato inviato.
           required: true
