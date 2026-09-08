@@ -3,6 +3,12 @@ name: Announce releases on Discord
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Release tag to announce (for example v0.1.0-beta.2)
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -11,13 +17,51 @@ jobs:
   announce:
     runs-on: ubuntu-latest
     steps:
+      - name: Resolve release details
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_RELEASE_NAME: ${{ github.event.release.name }}
+          EVENT_RELEASE_TAG: ${{ github.event.release.tag_name }}
+          EVENT_RELEASE_URL: ${{ github.event.release.html_url }}
+          EVENT_RELEASE_IS_PRERELEASE: ${{ github.event.release.prerelease }}
+          MANUAL_RELEASE_TAG: ${{ inputs.release_tag }}
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT_NAME" = "release" ]; then
+            RELEASE_NAME="$EVENT_RELEASE_NAME"
+            RELEASE_TAG="$EVENT_RELEASE_TAG"
+            RELEASE_URL="$EVENT_RELEASE_URL"
+            RELEASE_IS_PRERELEASE="$EVENT_RELEASE_IS_PRERELEASE"
+          else
+            if [ -z "${MANUAL_RELEASE_TAG:-}" ]; then
+              echo "A release tag is required for a manual run."
+              exit 1
+            fi
+
+            RELEASE_JSON=$(curl --fail-with-body -sS \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/${MANUAL_RELEASE_TAG}")
+
+            RELEASE_NAME=$(jq -r '.name // .tag_name' <<< "$RELEASE_JSON")
+            RELEASE_TAG=$(jq -r '.tag_name' <<< "$RELEASE_JSON")
+            RELEASE_URL=$(jq -r '.html_url' <<< "$RELEASE_JSON")
+            RELEASE_IS_PRERELEASE=$(jq -r '.prerelease' <<< "$RELEASE_JSON")
+          fi
+
+          {
+            echo "RELEASE_NAME=$RELEASE_NAME"
+            echo "RELEASE_TAG=$RELEASE_TAG"
+            echo "RELEASE_URL=$RELEASE_URL"
+            echo "RELEASE_IS_PRERELEASE=$RELEASE_IS_PRERELEASE"
+          } >> "$GITHUB_ENV"
+
       - name: Send release announcement to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          RELEASE_NAME: ${{ github.event.release.name }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
-          RELEASE_URL: ${{ github.event.release.html_url }}
-          RELEASE_IS_PRERELEASE: ${{ github.event.release.prerelease }}
         shell: bash
         run: |
           set -euo pipefail
