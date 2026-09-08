@@ -18,7 +18,9 @@ Consulta la [guida utente completa in inglese e italiano](USER_GUIDE.md).
 
 ## Community translations
 
-Want to help translate FS25 Mod Center into another language? Use the official [translation guide and English reference catalog](translations/README.md), then submit your contribution through the dedicated [translation form](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+Want to help translate FS25 Mod Center into another language? Start from the official English catalog and follow the translation guide, then submit your contribution through the dedicated form.
+
+[Translation guide](translations/README.md) · [English catalog](translations/en-US.json) · [Italian example](translations/it-IT.json) · [Submit translation](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml)
 
 The English catalog is the canonical reference. The Italian catalog is available as a complete translated example.
 
@@ -88,7 +90,9 @@ Consulta la [guida utente completa in italiano e inglese](USER_GUIDE.md).
 
 ### Traduzioni della community
 
-Vuoi aiutare a tradurre FS25 Mod Center in un’altra lingua? Consulta la [guida alle traduzioni e il catalogo inglese ufficiale](translations/README.md), quindi invia il contributo tramite il [modulo dedicato alle traduzioni](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
+Vuoi aiutare a tradurre FS25 Mod Center in un’altra lingua? Parti dal catalogo inglese ufficiale, segui la guida alle traduzioni e poi invia il contributo tramite il modulo dedicato.
+
+[Guida alle traduzioni](translations/README.md) · [Catalogo inglese](translations/en-US.json) · [Esempio italiano](translations/it-IT.json) · [Invia una traduzione](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml)
 
 Il catalogo inglese è il riferimento canonico. Il catalogo italiano è disponibile come esempio completo di traduzione.
 
