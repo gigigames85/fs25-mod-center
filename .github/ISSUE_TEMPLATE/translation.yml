@@ -1,0 +1,77 @@
+name: Translation contribution / Contributo traduzione
+description: Help translate FS25 Mod Center or improve an existing translation / Aiuta a tradurre FS25 Mod Center o migliora una traduzione esistente
+title: "[Translation]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping make FS25 Mod Center accessible to more users.
+        Grazie per contribuire a rendere FS25 Mod Center accessibile a più utenti.
+
+        Please use this form for new translations, corrections, terminology improvements or language-specific suggestions.
+        Usa questo modulo per nuove traduzioni, correzioni, miglioramenti terminologici o suggerimenti relativi a una lingua.
+
+  - type: dropdown
+    id: contribution-type
+    attributes:
+      label: Contribution type / Tipo di contributo
+      options:
+        - New language / Nuova lingua
+        - Translation correction / Correzione traduzione
+        - Terminology improvement / Miglioramento terminologico
+        - Missing text / Testo mancante
+        - Other / Altro
+    validations:
+      required: true
+
+  - type: input
+    id: language
+    attributes:
+      label: Language / Lingua
+      description: Enter the language you want to contribute to.
+      placeholder: e.g. German / Tedesco, French / Francese, Spanish / Spagnolo
+    validations:
+      required: true
+
+  - type: textarea
+    id: source-text
+    attributes:
+      label: Original text or key / Testo originale o chiave
+      description: Paste the original text shown in FS25 Mod Center, or the translation key if known.
+      placeholder: Paste the original text or key here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-translation
+    attributes:
+      label: Proposed translation / Traduzione proposta
+      description: Enter the translation you suggest.
+      placeholder: Write the proposed translation here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context or location in the app / Contesto o posizione nell'app
+      description: Tell us where the text appears, for example Settings, Library, Profiles or Updates. Screenshots are welcome.
+      placeholder: Where does this text appear? Add any useful context or screenshots.
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes / Note aggiuntive
+      description: Add any terminology notes, alternatives or explanations that may help review the translation.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Preliminary checks / Controlli preliminari
+      options:
+        - label: I have checked that a similar translation contribution has not already been submitted. / Ho verificato che un contributo simile non sia già stato inviato.
+          required: true
