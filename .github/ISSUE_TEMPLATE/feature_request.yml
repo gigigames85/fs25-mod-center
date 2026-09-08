@@ -16,7 +16,6 @@ body:
         - New feature / Nuova funzione
         - Improvement / Miglioramento
         - User interface / Interfaccia
-        - Translation / Traduzione
         - Other / Altro
     validations:
       required: true
