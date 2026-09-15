@@ -69,9 +69,9 @@ Farming Simulator 25 must be closed. Before changing `gameSettings.xml`, Mod Cen
 
 ## 5. Library
 
-The centralized Library keeps one physical copy of every recognized mod.
+The centralized Library keeps one canonical physical copy of each recognized mod **inside the Library itself**.
 
-If the same mod exists in multiple profiles, Mod Center avoids unnecessary duplicates. When different versions are found, the most recent local version is retained in the Library.
+If the same mod exists in multiple profiles, Mod Center catalogs it as a single Library item. The original ZIP files remain physically stored in their respective profile folders, so profile folders continue to occupy their own disk space. When different versions are found, the most recent local version is retained in the Library.
 
 Building or aligning the Library does not move, rename or delete the ZIP files stored in the original profile folders.
 
@@ -222,9 +222,9 @@ Farming Simulator 25 deve essere chiuso. Prima di modificare `gameSettings.xml`,
 
 ## 5. Libreria
 
-La Libreria centralizzata conserva una sola copia fisica di ogni mod riconosciuta.
+La Libreria centralizzata conserva una copia fisica canonica di ogni mod riconosciuta **all’interno della Libreria stessa**.
 
-Se la stessa mod è presente in più profili, Mod Center evita i duplicati inutili. Quando rileva versioni differenti, nella Libreria mantiene la versione locale più recente.
+Se la stessa mod è presente in più profili, Mod Center la cataloga come un unico elemento della Libreria. Gli ZIP originali restano fisicamente nelle rispettive cartelle profilo, che continuano quindi a occupare il proprio spazio su disco. Quando vengono rilevate versioni differenti, nella Libreria viene mantenuta la versione locale più recente.
 
 La creazione o l’allineamento della Libreria non sposta, rinomina o elimina gli ZIP presenti nelle cartelle originali dei profili.
 
@@ -304,7 +304,7 @@ Per aggiungere una nuova lingua:
 1. Copia `en-US.json` e rinominalo usando il codice locale appropriato, ad esempio `de-DE.json`, `fr-FR.json` o `es-ES.json`.
 2. Mantieni tutte le chiavi JSON esattamente invariate.
 3. Traduci soltanto i valori testuali.
-4. Aggiorna nella sezione `_meta` i valori `language`, `code` e `author`.
+4. Aggiorna nella sezione `_meta` i valori `language`, `code` e `author` quando necessario.
 5. Prima di inviare un aggiornamento, confronta il tuo file con l’ultima versione del catalogo inglese per non perdere testi dell’interfaccia aggiunti o modificati.
 6. Invia il JSON completo tramite il [modulo dedicato alle traduzioni](https://github.com/gigigames85/fs25-mod-center/issues/new?template=translation.yml).
 
