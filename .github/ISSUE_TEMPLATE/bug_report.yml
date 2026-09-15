@@ -16,7 +16,7 @@ body:
     attributes:
       label: FS25 Mod Center version / Versione
       description: Which version of FS25 Mod Center are you using?
-      placeholder: "Example: 0.1.0-beta.1"
+      placeholder: "Example: 1.0.0"
     validations:
       required: true
 
