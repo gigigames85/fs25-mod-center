@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: Release tag to announce (for example v0.1.0-beta.2)
+        description: Release tag to announce (for example v1.0.0)
         required: true
         type: string
 
