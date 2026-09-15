@@ -4,11 +4,11 @@
 
 FS25 Mod Center is a Windows desktop application designed to organize and manage Farming Simulator 25 mods across multiple profiles and maps.
 
-> **Beta software:** this release is under active development. Back up important files and report any unexpected behaviour.
+> **Stable release:** FS25 Mod Center 1.0.0 is the first stable version.
 
 ## Download
 
-Download the latest public Beta from the [Releases](https://github.com/gigigames85/fs25-mod-center/releases) section.
+Download the latest stable release from the [Releases](https://github.com/gigigames85/fs25-mod-center/releases) section.
 
 ## User guide · Guida utente
 
@@ -28,7 +28,7 @@ The English catalog is the canonical reference. The Italian catalog is available
 
 * Multiple mod profiles for different maps
 * Centralized physical mod library
-* Automatic detection of added, removed and updated mods
+* Real-time detection of mods added, removed or replaced outside Mod Center
 * Automatic classification of vehicles, tools, trailers and placeables
 * Local and centralized backup management
 * Detection and alignment of different mod versions
@@ -49,16 +49,16 @@ WebView2 is downloaded automatically by the installer when required.
 
 FS25 Mod Center can also manage mod folders from non-Steam editions. Profiles, Library, Backup, classification and update checks remain available when the appropriate mod folders are selected.
 
-In Beta 2, only the **Launch FS25** button is reserved for the Steam edition. Other editions of the game must be started from their usual launcher.
+Currently, only the **Launch FS25** button is reserved for the Steam edition. Other editions of the game must be started from their usual launcher.
 
 ## Installation
 
 1. Open the latest release.
-2. Download `FS25.Mod.Center_0.1.0-beta.2_x64-setup.exe`.
+2. Download `FS25 Mod Center_1.0.0_x64-setup.exe`.
 3. Run the installer.
 4. Start FS25 Mod Center from the Windows Start menu.
 
-The Beta is not digitally signed. Windows SmartScreen may therefore display a warning when the installer is downloaded from the Internet.
+The Windows installer is not currently digitally signed. Windows SmartScreen may therefore display a warning when the installer is downloaded from the Internet.
 
 ## Feedback and bug reports
 
@@ -78,11 +78,11 @@ When reporting a problem, please include:
 
 FS25 Mod Center è un’applicazione desktop per Windows progettata per organizzare e gestire le mod di Farming Simulator 25 attraverso profili e mappe differenti.
 
-> **Software Beta:** questa versione è ancora in sviluppo. Conserva un backup dei file importanti e segnala qualsiasi comportamento inatteso.
+> **Versione stabile:** FS25 Mod Center 1.0.0 è la prima versione stabile.
 
 ### Download
 
-Scarica l’ultima Beta pubblica dalla sezione [Releases](https://github.com/gigigames85/fs25-mod-center/releases).
+Scarica l’ultima versione stabile dalla sezione [Releases](https://github.com/gigigames85/fs25-mod-center/releases).
 
 ### Guida utente
 
@@ -100,7 +100,7 @@ Il catalogo inglese è il riferimento canonico. Il catalogo italiano è disponib
 
 * Profili mod multipli per mappe differenti
 * Libreria fisica centralizzata
-* Rilevamento automatico delle mod aggiunte, rimosse o aggiornate
+* Rilevamento in tempo reale delle mod aggiunte, rimosse o sostituite al di fuori di Mod Center
 * Classificazione automatica di mezzi, attrezzi, rimorchi e posizionabili
 * Gestione dei backup locali e centralizzati
 * Rilevamento e allineamento delle versioni differenti
@@ -121,16 +121,16 @@ WebView2 viene scaricato automaticamente dall’installer quando necessario.
 
 FS25 Mod Center può gestire anche le cartelle mod delle edizioni non Steam. Profili, Libreria, Backup, classificazione e controllo degli aggiornamenti restano disponibili selezionando le cartelle mod appropriate.
 
-Nella Beta 2 soltanto il pulsante **Avvia FS25** è riservato all’edizione Steam. Le altre versioni del gioco devono essere avviate dal proprio launcher.
+Attualmente soltanto il pulsante **Avvia FS25** è riservato all’edizione Steam. Le altre versioni del gioco devono essere avviate dal proprio launcher.
 
 ### Installazione
 
 1. Apri la release più recente.
-2. Scarica `FS25.Mod.Center_0.1.0-beta.2_x64-setup.exe`.
+2. Scarica `FS25 Mod Center_1.0.0_x64-setup.exe`.
 3. Avvia l’installer.
 4. Apri FS25 Mod Center dal menu Start di Windows.
 
-La Beta non è firmata digitalmente. Windows SmartScreen potrebbe quindi mostrare un avviso quando l’installer viene scaricato da Internet.
+L’installer Windows non è attualmente firmato digitalmente. Windows SmartScreen potrebbe quindi mostrare un avviso quando l’installer viene scaricato da Internet.
 
 ### Segnalazioni
 
